@@ -125,3 +125,74 @@ export const submitContact = async (contactData) => {
     };
   }
 };
+
+// Admin Dashboard API Integrations
+export const adminLogin = async (username, password, secretPhrase) => {
+  const response = await fetch(`${API_BASE_URL}/admin/login`, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ username, password, secretPhrase })
+  });
+  const result = await response.json();
+  if (!response.ok) {
+    throw new Error(result.message || "Login failed.");
+  }
+  return result;
+};
+
+export const fetchAdminMessages = async (token) => {
+  const response = await fetch(`${API_BASE_URL}/admin/messages`, {
+    method: "GET",
+    headers: {
+      "Authorization": `Bearer ${token}`
+    }
+  });
+  const result = await response.json();
+  if (!response.ok) {
+    throw new Error(result.message || "Failed to fetch messages.");
+  }
+  return result;
+};
+
+export const markMessageAsRead = async (id, token) => {
+  const response = await fetch(`${API_BASE_URL}/admin/messages/${id}/read`, {
+    method: "PATCH",
+    headers: {
+      "Authorization": `Bearer ${token}`
+    }
+  });
+  const result = await response.json();
+  if (!response.ok) {
+    throw new Error(result.message || "Failed to mark as read.");
+  }
+  return result;
+};
+
+export const markMessageAsUnread = async (id, token) => {
+  const response = await fetch(`${API_BASE_URL}/admin/messages/${id}/unread`, {
+    method: "PATCH",
+    headers: {
+      "Authorization": `Bearer ${token}`
+    }
+  });
+  const result = await response.json();
+  if (!response.ok) {
+    throw new Error(result.message || "Failed to mark as unread.");
+  }
+  return result;
+};
+
+export const deleteAdminMessage = async (id, token) => {
+  const response = await fetch(`${API_BASE_URL}/admin/messages/${id}`, {
+    method: "DELETE",
+    headers: {
+      "Authorization": `Bearer ${token}`
+    }
+  });
+  const result = await response.json();
+  if (!response.ok) {
+    throw new Error(result.message || "Failed to delete message.");
+  }
+  return result;
+};
+

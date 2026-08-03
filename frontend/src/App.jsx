@@ -9,6 +9,8 @@ import Experience from "./components/Experience";
 import Certifications from "./components/Certifications";
 import Contact from "./components/Contact";
 import Footer from "./components/Footer";
+import AdminLogin from "./components/AdminLogin";
+import AdminDashboard from "./components/AdminDashboard";
 
 import {
   fetchProfile,
@@ -28,8 +30,20 @@ export default function App() {
   const [socialLinks, setSocialLinks] = useState({});
   const [loading, setLoading] = useState(true);
   const [activeSection, setActiveSection] = useState("home");
+  
+  // Admin dashboard states
+  const [isAdminRoute, setIsAdminRoute] = useState(false);
+  const [adminToken, setAdminToken] = useState(localStorage.getItem("adminToken") || null);
 
   useEffect(() => {
+    const isSecretAdmin = window.location.pathname === "/secret-admin";
+    setIsAdminRoute(isSecretAdmin);
+
+    if (isSecretAdmin) {
+      setLoading(false);
+      return;
+    }
+
     const loadData = async () => {
       try {
         const [profileRes, projectsRes, skillsRes, experienceRes, certsRes, socialsRes] = await Promise.all([
@@ -118,6 +132,23 @@ export default function App() {
         `}</style>
       </div>
     );
+  }
+
+  const handleLoginSuccess = (token) => {
+    localStorage.setItem("adminToken", token);
+    setAdminToken(token);
+  };
+
+  const handleLogout = () => {
+    localStorage.removeItem("adminToken");
+    setAdminToken(null);
+  };
+
+  if (isAdminRoute) {
+    if (adminToken) {
+      return <AdminDashboard token={adminToken} onLogout={handleLogout} />;
+    }
+    return <AdminLogin onLoginSuccess={handleLoginSuccess} />;
   }
 
   return (

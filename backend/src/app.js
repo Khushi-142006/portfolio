@@ -1,12 +1,15 @@
 import express from "express";
 import cors from "cors";
 import morgan from "morgan";
+import helmet from "helmet";
 import apiRoutes from "./routes/api.routes.js";
+import adminRoutes from "./routes/admin.routes.js";
 import { checkDbConnection } from "./middleware/dbCheck.js";
 
 const app = express();
 
-// Middlewares
+// Security Headers & Middlewares
+app.use(helmet());
 app.use(cors({
   origin: ["http://localhost:5173", "http://localhost:3000"], // local dev ports for Vite
   methods: ["GET", "POST", "OPTIONS"],
@@ -17,6 +20,7 @@ app.use(express.json());
 
 // Main API Route grouping with DB connection middleware check
 app.use("/api", checkDbConnection, apiRoutes);
+app.use("/api/admin", checkDbConnection, adminRoutes);
 
 // Health check endpoint
 app.get("/health", (req, res) => {

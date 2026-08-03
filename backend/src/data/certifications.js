@@ -1,39 +1,21 @@
 const certificationsData = [
   {
     id: "cert-1",
-    title: "AWS Certified Solutions Architect – Professional",
-    issuer: "Amazon Web Services (AWS)",
-    issueDate: "2024",
-    credentialId: "AWS-SAP-88741",
-    verificationUrl: "https://aws.amazon.com/verification",
-    description: "Validation of advanced technical skills and experience in designing distributed applications and systems on the AWS platform."
+    title: "Agentic AI: The New Software Paradigm",
+    issuer: "AI Campus (Hasso Plattner Institute, KI Servicezentrum, ElevateSoul AI)",
+    issueDate: "2026",
+    credentialId: "",
+    verificationUrl: "",
+    description: "Completed a 10-hour program covering Agentic AI, autonomous AI systems, multi-agent workflows, AI orchestration, and real-world applications. Achieved 100% score."
   },
   {
     id: "cert-2",
-    title: "Professional Cloud Architect",
-    issuer: "Google Cloud Platform (GCP)",
-    issueDate: "2023",
-    credentialId: "GCP-PCA-99021",
-    verificationUrl: "https://cloud.google.com/certification",
-    description: "Evaluates the ability to design, develop, and manage robust, secure, scalable, and highly available GCP solutions."
-  },
-  {
-    id: "cert-3",
-    title: "TensorFlow Developer Certificate",
-    issuer: "TensorFlow / Google",
-    issueDate: "2022",
-    credentialId: "TF-DEV-32049",
-    verificationUrl: "https://www.tensorflow.org/certificate",
-    description: "Demonstrates understanding of building and training models using TensorFlow for computer vision, NLP, and sequence problems."
-  },
-  {
-    id: "cert-4",
-    title: "Certified ScrumMaster (CSM)",
-    issuer: "Scrum Alliance",
-    issueDate: "2021",
-    credentialId: "SA-CSM-554281",
-    verificationUrl: "https://www.scrumalliance.org",
-    description: "Validation of foundational Scrum principles, practices, and values for agile software project management."
+    title: "Hashgraph Developer",
+    issuer: "Hedera",
+    issueDate: "2024–2025",
+    credentialId: "",
+    verificationUrl: "",
+    description: "Training and certification focused on Hedera Hashgraph development, smart contracts, and decentralized application basics."
   }
 ];
 

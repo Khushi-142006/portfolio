@@ -1,5 +1,11 @@
 import jwt from "jsonwebtoken";
 import Contact from "../models/Contact.js";
+import Profile from "../models/Profile.js";
+import Project from "../models/Project.js";
+import Skill from "../models/Skill.js";
+import Experience from "../models/Experience.js";
+import Certification from "../models/Certification.js";
+import SocialLink from "../models/SocialLink.js";
 
 export const loginAdmin = (req, res, next) => {
   try {
@@ -121,6 +127,72 @@ export const deleteMessage = async (req, res, next) => {
       success: true,
       message: "Message deleted successfully."
     });
+  } catch (error) {
+    next(error);
+  }
+};
+
+export const updateProfile = async (req, res, next) => {
+  try {
+    const updated = await Profile.findOneAndUpdate({}, req.body, {
+      new: true,
+      upsert: true,
+      runValidators: true
+    }).exec();
+    res.json({ success: true, message: "Profile updated successfully.", data: updated });
+  } catch (error) {
+    next(error);
+  }
+};
+
+export const updateSocialLinks = async (req, res, next) => {
+  try {
+    const updated = await SocialLink.findOneAndUpdate({}, req.body, {
+      new: true,
+      upsert: true,
+      runValidators: true
+    }).exec();
+    res.json({ success: true, message: "Social links updated successfully.", data: updated });
+  } catch (error) {
+    next(error);
+  }
+};
+
+export const updateSkills = async (req, res, next) => {
+  try {
+    await Skill.deleteMany({});
+    const updated = await Skill.insertMany(req.body);
+    res.json({ success: true, message: "Skills updated successfully.", data: updated });
+  } catch (error) {
+    next(error);
+  }
+};
+
+export const updateExperience = async (req, res, next) => {
+  try {
+    await Experience.deleteMany({});
+    const updated = await Experience.insertMany(req.body);
+    res.json({ success: true, message: "Experience updated successfully.", data: updated });
+  } catch (error) {
+    next(error);
+  }
+};
+
+export const updateProjects = async (req, res, next) => {
+  try {
+    await Project.deleteMany({});
+    const updated = await Project.insertMany(req.body);
+    res.json({ success: true, message: "Projects updated successfully.", data: updated });
+  } catch (error) {
+    next(error);
+  }
+};
+
+export const updateCertifications = async (req, res, next) => {
+  try {
+    await Certification.deleteMany({});
+    const updated = await Certification.insertMany(req.body);
+    res.json({ success: true, message: "Certifications updated successfully.", data: updated });
   } catch (error) {
     next(error);
   }

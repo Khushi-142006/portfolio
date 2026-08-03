@@ -1,4 +1,4 @@
-# Premium Full-Stack Portfolio: Alex Carter
+# Premium Full-Stack Portfolio: Khushi Gadyal
 
 This is a production-ready, highly professional full-stack personal portfolio website designed for recruiters and hiring managers. It features a minimalist modern user interface inspired by Linear, Stripe, and Vercel, paired with a clean Model-View-Controller (MVC) inspired backend architecture.
 
@@ -21,7 +21,7 @@ This is a production-ready, highly professional full-stack personal portfolio we
 ## 📂 Project Structure
 
 ```text
-alex-carter-portfolio/
+khushi-gadyal-portfolio/
 ├── backend/                  # Node.js + Express backend app
 │   ├── src/
 │   │   ├── controllers/      # MVC request controllers

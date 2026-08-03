@@ -4,7 +4,13 @@ import {
   getMessages,
   markMessageAsRead,
   markMessageAsUnread,
-  deleteMessage
+  deleteMessage,
+  updateProfile,
+  updateSocialLinks,
+  updateSkills,
+  updateExperience,
+  updateProjects,
+  updateCertifications
 } from "../controllers/admin.controller.js";
 import { requireAuth } from "../middleware/auth.js";
 import { loginRateLimiter } from "../middleware/rateLimiter.js";
@@ -19,5 +25,13 @@ router.get("/messages", requireAuth, getMessages);
 router.patch("/messages/:id/read", requireAuth, markMessageAsRead);
 router.patch("/messages/:id/unread", requireAuth, markMessageAsUnread);
 router.delete("/messages/:id", requireAuth, deleteMessage);
+
+// CMS Update routes
+router.put("/profile", requireAuth, updateProfile);
+router.put("/social-links", requireAuth, updateSocialLinks);
+router.put("/skills", requireAuth, updateSkills);
+router.put("/experience", requireAuth, updateExperience);
+router.put("/projects", requireAuth, updateProjects);
+router.put("/certifications", requireAuth, updateCertifications);
 
 export default router;

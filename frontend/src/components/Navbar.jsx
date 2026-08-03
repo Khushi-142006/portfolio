@@ -33,7 +33,7 @@ export default function Navbar({ activeSection, socialLinks }) {
       <div className="container nav-container">
         <a href="#home" className="logo">
           <Terminal size={20} />
-          <span>alex_carter.dev</span>
+          <span>khushigadyal.dev</span>
         </a>
 
         {/* Desktop Navigation */}

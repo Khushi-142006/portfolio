@@ -1,7 +1,7 @@
 {
-  "name": "alex-carter-portfolio-backend",
+  "name": "khushi-gadyal-portfolio-backend",
   "version": "1.0.0",
-  "description": "Premium Portfolio Backend for Alex Carter",
+  "description": "Premium Portfolio Backend for Khushi Gadyal",
   "main": "src/server.js",
   "type": "module",
   "scripts": {
@@ -10,7 +10,7 @@
     "seed": "node scripts/seed.js"
   },
   "keywords": [],
-  "author": "Alex Carter",
+  "author": "Khushi Gadyal",
   "license": "ISC",
   "dependencies": {
     "cors": "^2.8.5",

@@ -6,8 +6,8 @@ export default function Hero({ profile, socialLinks }) {
   const roles = [
     "Full Stack Developer",
     "AI/ML Engineer",
-    "Solutions Architect",
-    "Open Source Contributor"
+    "RAG Specialist",
+    "MERN Stack Developer"
   ];
   
   const [roleIndex, setRoleIndex] = useState(0);
@@ -58,7 +58,7 @@ export default function Hero({ profile, socialLinks }) {
           
           <h1 className="hero-title">
             Hi, I'm <br />
-            <span className="hero-title-name">{profile.name || "Alex Carter"}</span>
+            <span className="hero-title-name">{profile.name || "Khushi Gadyal"}</span>
           </h1>
 
           <div className="typing-container">
@@ -69,7 +69,7 @@ export default function Hero({ profile, socialLinks }) {
           </div>
 
           <p className="hero-desc">
-            {profile.bio || "A Full Stack Software Engineer and AI/ML Specialist building premium web solutions."}
+            {profile.bio || "An Aspiring AI/ML Engineer and Full-Stack Developer building intelligent scalable solutions."}
           </p>
 
           <div className="hero-actions">

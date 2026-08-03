@@ -63,7 +63,7 @@ export default function Contact({ socialLinks }) {
                 <div>
                   <span className="contact-detail-label">Email Address</span>
                   <a href={`mailto:${socialLinks.email}`} className="contact-detail-value">
-                    {socialLinks.email || "alex.carter.dev@gmail.com"}
+                    {socialLinks.email || "gadyalkhushi1428@gmail.com"}
                   </a>
                 </div>
               </div>
@@ -75,7 +75,7 @@ export default function Contact({ socialLinks }) {
                 <div>
                   <span className="contact-detail-label">Phone Number</span>
                   <span className="contact-detail-value">
-                    {socialLinks.phone || "+1 (555) 019-2834"}
+                    {socialLinks.phone || "+91 8310974973"}
                   </span>
                 </div>
               </div>
@@ -87,7 +87,7 @@ export default function Contact({ socialLinks }) {
                 <div>
                   <span className="contact-detail-label">Location</span>
                   <span className="contact-detail-value">
-                    {socialLinks.location || "Austin, Texas, United States"}
+                    {socialLinks.location || "Belagavi, Karnataka, India"}
                   </span>
                 </div>
               </div>
@@ -162,7 +162,7 @@ export default function Contact({ socialLinks }) {
                   name="message"
                   value={formData.message}
                   onChange={handleChange}
-                  placeholder="Hi Alex, I'd love to chat about an upcoming project..."
+                  placeholder="Hi Khushi, I'd love to chat about an upcoming project..."
                   className="form-input form-textarea"
                   required
                 />

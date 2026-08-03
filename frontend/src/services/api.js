@@ -1,39 +1,37 @@
-const API_BASE_URL = import.meta.env.VITE_API_URL || "http://localhost:5000/api";
+const API_BASE_URL = import.meta.env.VITE_API_URL || "http://127.0.0.1:5000/api";
 
 // Fallback hardcoded data in case the backend server is not running
 const FALLBACK_DATA = {
   profile: {
-    name: "Alex Carter (Demo)",
-    role: "Full Stack Developer | AI/ML Engineer",
-    tagline: "Building premium web applications and scalable intelligent systems.",
-    bio: "I am a Full Stack Software Engineer and AI/ML Specialist dedicated to crafting exceptional digital experiences. (Note: Backend server is offline; viewing local demo data).",
-    profileImage: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=400&h=400&q=80",
+    name: "Khushi Gadyal (Demo)",
+    role: "Aspiring AI/ML Engineer | Full Stack Developer",
+    tagline: "Building intelligent applications and full-stack solutions.",
+    bio: "Aspiring AI/ML Engineer with hands-on experience in designing and developing AI-powered and full-stack web applications using Python, React, FastAPI, Node.js, Express.js, and MongoDB. (Note: Backend server is offline; viewing local demo data).",
+    profileImage: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=400&h=400&q=80",
     resumeUrl: "#",
     careerObjective: "To leverage my expertise in full-stack web development and artificial intelligence to design and deliver high-impact, production-ready software systems.",
     stats: [
-      { label: "Years Experience", value: "5+" },
-      { label: "Projects Completed", value: "25+" },
-      { label: "AI Models Deployed", value: "12+" },
-      { label: "Open Source Contribs", value: "200+" }
+      { label: "Projects Completed", value: "3" },
+      { label: "AI Models / RAG Deployed", value: "2" },
+      { label: "Certifications", value: "2" }
     ],
     achievements: [
-      "Winner of the National AI Hackathon 2025.",
-      "Architected and migrated a legacy monolith to a Node.js microservices setup.",
-      "Developed a lightweight open-source React state visualizer with 2,500+ GitHub Stars.",
-      "Published a research paper on optimization of transformer inference."
+      "Completed a 10-hour program covering Agentic AI, autonomous AI systems, multi-agent workflows, and AI orchestration with 100% score.",
+      "Built and deployed PaperMind AI, an intelligent document assistant utilizing Retrieval-Augmented Generation (RAG).",
+      "Developed a personal portfolio website showcasing projects, skills, and secure contact management."
     ]
   },
   projects: [
     {
       id: "demo-1",
-      title: "NovaSearch - AI Semantic Search Engine",
-      description: "A production-grade semantic search platform featuring dense vector search and hybrid keyword-vector retrieval.",
-      image: "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=800&q=80",
-      technologies: ["React", "FastAPI", "Pinecone", "OpenAI API"],
-      githubUrl: "#",
-      liveUrl: "#",
-      status: "Production",
-      architecture: ["Vector Search", "Hybrid Retrieval"],
+      title: "PaperMind AI – AI PDF Chat Assistant",
+      description: "An AI-powered document assistant that enables users to upload PDF files and ask natural language questions using Retrieval-Augmented Generation (RAG).",
+      image: "https://images.unsplash.com/photo-1568605117036-5fe5e7bab0b7?auto=format&fit=crop&w=800&q=80",
+      technologies: ["React", "FastAPI", "Python", "ChromaDB", "LangChain"],
+      githubUrl: "https://github.com/Khushi-142006/papermind-ai",
+      liveUrl: "",
+      status: "Active",
+      architecture: ["Retrieval-Augmented Generation (RAG)", "Semantic Search"],
       category: "AI/ML"
     }
   ],
@@ -41,41 +39,44 @@ const FALLBACK_DATA = {
     {
       category: "Programming Languages",
       items: [
-        { name: "TypeScript", level: "Expert" },
+        { name: "Python", level: "Advanced" },
         { name: "JavaScript", level: "Expert" },
-        { name: "Python", level: "Expert" }
+        { name: "TypeScript", level: "Advanced" }
       ]
     }
   ],
   experience: [
     {
       id: "exp-1",
-      type: "work",
-      role: "Senior Full Stack Engineer",
-      company: "TechNova Solutions",
-      location: "San Francisco, CA (Remote)",
-      period: "2023 - Present",
-      description: ["Led migration to microservices.", "Designed event-driven real-time analytics."]
+      type: "internship",
+      role: "Full Stack Development Intern",
+      company: "Thiranex",
+      location: "Remote (Project-Based)",
+      period: "Jul 2026 – Aug 2026",
+      description: [
+        "Developed full-stack web applications using modern frontend and backend technologies.",
+        "Built and integrated RESTful APIs with databases."
+      ]
     }
   ],
   certifications: [
     {
       id: "cert-1",
-      title: "AWS Certified Solutions Architect",
-      issuer: "AWS",
-      issueDate: "2024",
-      credentialId: "AWS-123",
-      verificationUrl: "#",
-      description: "Validation of advanced technical skills and experience in designing distributed applications."
+      title: "Agentic AI: The New Software Paradigm",
+      issuer: "AI Campus (Hasso Plattner Institute)",
+      issueDate: "2026",
+      credentialId: "",
+      verificationUrl: "",
+      description: "Completed a 10-hour program covering Agentic AI, autonomous AI systems, multi-agent workflows, and AI orchestration."
     }
   ],
   socialLinks: {
-    github: "https://github.com/alexcarter",
-    linkedin: "https://linkedin.com",
-    twitter: "https://twitter.com",
-    email: "alex.carter.dev@gmail.com",
-    phone: "+1 (555) 019-2834",
-    location: "Austin, Texas, United States"
+    github: "https://github.com/Khushi-142006",
+    linkedin: "https://www.linkedin.com/in/khushi-gadyal-940067349?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
+    twitter: "",
+    email: "gadyalkhushi1428@gmail.com",
+    phone: "+91 8310974973",
+    location: "Belagavi, Karnataka, India"
   }
 };
 
@@ -192,6 +193,103 @@ export const deleteAdminMessage = async (id, token) => {
   const result = await response.json();
   if (!response.ok) {
     throw new Error(result.message || "Failed to delete message.");
+  }
+  return result;
+};
+
+// Portfolio CMS Updates
+export const updateProfile = async (profileData, token) => {
+  const response = await fetch(`${API_BASE_URL}/admin/profile`, {
+    method: "PUT",
+    headers: {
+      "Content-Type": "application/json",
+      "Authorization": `Bearer ${token}`
+    },
+    body: JSON.stringify(profileData)
+  });
+  const result = await response.json();
+  if (!response.ok) {
+    throw new Error(result.message || "Failed to update profile.");
+  }
+  return result;
+};
+
+export const updateSocialLinks = async (socialData, token) => {
+  const response = await fetch(`${API_BASE_URL}/admin/social-links`, {
+    method: "PUT",
+    headers: {
+      "Content-Type": "application/json",
+      "Authorization": `Bearer ${token}`
+    },
+    body: JSON.stringify(socialData)
+  });
+  const result = await response.json();
+  if (!response.ok) {
+    throw new Error(result.message || "Failed to update social links.");
+  }
+  return result;
+};
+
+export const updateSkills = async (skillsData, token) => {
+  const response = await fetch(`${API_BASE_URL}/admin/skills`, {
+    method: "PUT",
+    headers: {
+      "Content-Type": "application/json",
+      "Authorization": `Bearer ${token}`
+    },
+    body: JSON.stringify(skillsData)
+  });
+  const result = await response.json();
+  if (!response.ok) {
+    throw new Error(result.message || "Failed to update skills.");
+  }
+  return result;
+};
+
+export const updateExperience = async (experienceData, token) => {
+  const response = await fetch(`${API_BASE_URL}/admin/experience`, {
+    method: "PUT",
+    headers: {
+      "Content-Type": "application/json",
+      "Authorization": `Bearer ${token}`
+    },
+    body: JSON.stringify(experienceData)
+  });
+  const result = await response.json();
+  if (!response.ok) {
+    throw new Error(result.message || "Failed to update experience.");
+  }
+  return result;
+};
+
+export const updateProjects = async (projectsData, token) => {
+  const response = await fetch(`${API_BASE_URL}/admin/projects`, {
+    method: "PUT",
+    headers: {
+      "Content-Type": "application/json",
+      "Authorization": `Bearer ${token}`
+    },
+    body: JSON.stringify(projectsData)
+  });
+  const result = await response.json();
+  if (!response.ok) {
+    throw new Error(result.message || "Failed to update projects.");
+  }
+  return result;
+};
+
+export const updateCertifications = async (certsData, token) => {
+  const response = await fetch(`${API_BASE_URL}/admin/certifications`, {
+    method: "PUT",
+    headers: {
+      "Content-Type": "application/json",
+      "Authorization": `Bearer ${token}`
+    },
+    body: JSON.stringify(certsData)
+  });
+  const result = await response.json();
+  if (!response.ok) {
+    throw new Error(result.message || "Failed to update certifications.");
   }
   return result;
 };

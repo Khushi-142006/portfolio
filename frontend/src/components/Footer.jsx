@@ -17,10 +17,10 @@ export default function Footer({ profile, socialLinks }) {
           <div className="footer-brand">
             <a href="#home" className="logo" style={{ fontSize: "1.1rem" }}>
               <Terminal size={18} />
-              <span>alex_carter.dev</span>
+              <span>khushigadyal.dev</span>
             </a>
             <p className="footer-brand-desc">
-              Designing premium frontend interfaces and scalable microservices architectures.
+              Designing intelligent AI/ML applications and responsive full-stack web applications.
             </p>
           </div>
 
@@ -49,7 +49,7 @@ export default function Footer({ profile, socialLinks }) {
 
         <div className="footer-bottom">
           <p className="footer-copyright">
-            &copy; {new Date().getFullYear()} Alex Carter. All rights reserved. Handcrafted in React.
+            &copy; {new Date().getFullYear()} Khushi Gadyal. All rights reserved. Handcrafted in React.
           </p>
 
           <div style={{ display: "flex", gap: "16px", alignItems: "center" }}>

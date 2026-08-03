@@ -98,7 +98,7 @@ export default function App() {
     return (
       <div className="loader-container">
         <div className="pulse-loader"></div>
-        <span className="loader-text">Loading Alex Carter's Portfolio...</span>
+        <span className="loader-text">Loading Khushi Gadyal's Portfolio...</span>
         <style>{`
           .loader-container {
             display: flex;

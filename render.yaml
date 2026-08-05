@@ -1,0 +1,24 @@
+services:
+  - type: web
+    name: portfolio-khushi-gadyal
+    env: node
+    plan: free
+    buildCommand: npm run build
+    startCommand: npm start
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: VITE_API_URL
+        value: /api
+      - key: PORT
+        value: 10000
+      - key: MONGODB_URI
+        placeholder: "mongodb+srv://..."
+      - key: JWT_SECRET
+        generateValue: true
+      - key: ADMIN_USERNAME
+        placeholder: "admin"
+      - key: ADMIN_PASSWORD
+        placeholder: "securepassword123"
+      - key: ADMIN_SECRET
+        placeholder: "secretphrase123"

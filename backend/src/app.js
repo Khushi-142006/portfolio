@@ -2,14 +2,21 @@ import express from "express";
 import cors from "cors";
 import morgan from "morgan";
 import helmet from "helmet";
+import path from "path";
+import { fileURLToPath } from "url";
 import apiRoutes from "./routes/api.routes.js";
 import adminRoutes from "./routes/admin.routes.js";
 import { checkDbConnection } from "./middleware/dbCheck.js";
 
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
 const app = express();
 
 // Security Headers & Middlewares
-app.use(helmet());
+app.use(helmet({
+  contentSecurityPolicy: false,
+}));
 app.use(cors({
   origin: ["http://localhost:5173", "http://localhost:3000", "http://127.0.0.1:5173", "http://127.0.0.1:3000"], // local dev ports for Vite
   methods: ["GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"],
@@ -27,10 +34,23 @@ app.get("/health", (req, res) => {
   res.status(200).json({ status: "OK", timestamp: new Date() });
 });
 
-// Fallback for page not found (404)
-app.use((req, res, next) => {
-  res.status(404).json({ error: `Route ${req.originalUrl} not found.` });
-});
+// Serve static assets in production
+if (process.env.NODE_ENV === "production") {
+  const distPath = path.join(__dirname, "../../frontend/dist");
+  app.use(express.static(distPath));
+
+  app.get("*", (req, res) => {
+    if (req.path.startsWith("/api")) {
+      return res.status(404).json({ error: `Route ${req.originalUrl} not found.` });
+    }
+    res.sendFile(path.join(distPath, "index.html"));
+  });
+} else {
+  // Fallback for page not found (404)
+  app.use((req, res, next) => {
+    res.status(404).json({ error: `Route ${req.originalUrl} not found.` });
+  });
+}
 
 // Centralized error handling middleware
 app.use((err, req, res, next) => {

@@ -35,22 +35,13 @@ app.get("/health", (req, res) => {
 });
 
 // Serve static assets in production
-if (process.env.NODE_ENV === "production") {
-  const distPath = path.join(__dirname, "../../frontend/dist");
-  app.use(express.static(distPath));
-
-  app.get("*", (req, res) => {
-    if (req.path.startsWith("/api")) {
-      return res.status(404).json({ error: `Route ${req.originalUrl} not found.` });
-    }
-    res.sendFile(path.join(distPath, "index.html"));
+// Fallback for unknown routes
+app.use((req, res) => {
+  res.status(404).json({
+    success: false,
+    message: `Route ${req.originalUrl} not found.`,
   });
-} else {
-  // Fallback for page not found (404)
-  app.use((req, res, next) => {
-    res.status(404).json({ error: `Route ${req.originalUrl} not found.` });
-  });
-}
+});
 
 // Centralized error handling middleware
 app.use((err, req, res, next) => {

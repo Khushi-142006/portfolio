@@ -12,7 +12,7 @@ services:
         value: /api
       - key: PORT
         value: 10000
-      -services:
+      - services:
   - type: web
     name: portfolio-khushi-gadyal
     env: node

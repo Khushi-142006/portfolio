@@ -7,7 +7,7 @@ const FALLBACK_DATA = {
     role: "Aspiring AI/ML Engineer | Full Stack Developer",
     tagline: "Building intelligent applications and full-stack solutions.",
     bio: "Aspiring AI/ML Engineer with hands-on experience in designing and developing AI-powered and full-stack web applications using Python, React, FastAPI, Node.js, Express.js, and MongoDB. (Note: Backend server is offline; viewing local demo data).",
-    profileImage: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=400&h=400&q=80",
+    profileImage: "/profile.jpg",
     resumeUrl: "#",
     careerObjective: "To leverage my expertise in full-stack web development and artificial intelligence to design and deliver high-impact, production-ready software systems.",
     stats: [

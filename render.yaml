@@ -4,15 +4,14 @@ services:
     env: node
     plan: free
 
-    buildCommand: npm run build
+    rootDir: backend
+
+    buildCommand: npm install
     startCommand: npm start
 
     envVars:
       - key: NODE_ENV
         value: production
-
-      - key: VITE_API_URL
-        value: /api
 
       - key: PORT
         value: "10000"
